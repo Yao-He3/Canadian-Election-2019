@@ -132,7 +132,7 @@ I am going to predict the probability of Trudeau winning the election by the var
 
 \newpage
 # Model/Methodology
-We will be using a logistic regression model by the glm function in R to model the proportion of voters who will vote for Justin Trudeau with factors of age, sex, province, and education. And we will use backward elimination using AIC to get an alternative model. We will then compare the results we get from the two models. The main reason for choosing the logistic regression is that the dependent variable that we care about is the probability of voting for Justin Trudeau (vote_Trudeau). It is a binary variable. We want to make a prediction of the probability of Trudeau winning the election and it makes no sense if the predicted value is greater than 1 or less than 0. \newline
+I will use a logistic regression model by the glm function in R to model the proportion of voters who will vote for Justin Trudeau with factors of age, sex, province, and education. And I will use backward elimination using AIC to get an alternative model. I will then compare the results we get from the two models. The main reason for choosing the logistic regression is that the dependent variable that we care about is the probability of voting for Justin Trudeau (vote_Trudeau). It is a binary variable. I want to make a prediction of the probability of Trudeau winning the election and it makes no sense if the predicted value is greater than 1 or less than 0. \newline
 
 The explanatory variables are: \newline
 \textbullet Age is a numerical variable that represents the age of a given person. From the two datasets, age is surveyed by inputting the numbers, hence we continue to use to numerical values here. Meanwhile, numerical values are more accurate than just putting age groups for the prediction. Age is included because people of different ages may weigh the political policies differently and tend to have different opinions on the Party in charge. \newline
@@ -142,7 +142,7 @@ The explanatory variables are: \newline
 
 
 ## Model Setup
-This is the full logistic regression model we are using: \newline
+This is the full logistic regression model I am using: \newline
 Voting for Trudeau: \newline
 $$ log(\frac{p_{JT}}{1-p_{JT}}) = \beta_{t0}+\beta_{t1}  x_{age}+\beta_{t2}  x_{male}+\beta_{t3}  x_{BC}+\beta_{t4}  x_{MB}+\beta_{t5}  x_{NB}+\beta_{t6}  x_{NL}+\beta_{t7} x_{NT}+\beta_{t8}  x_{NS}+\beta_{t9}  x_{NU}$$
 $$+\beta_{t10}  x_{ON}+\beta_{t11}  x_{PE}+\beta_{t12}  x_{QC}+\beta_{t13}  x_{SK}+\beta_{t14}  x_{YT}+\beta_{t15}  x_{C}+\beta_{t16}  x_{HS}+\beta_{t17}  x_{LHS}+\beta_{t18}x_{U} + \epsilon$$
@@ -154,7 +154,7 @@ From the equations: \newline
 \textbullet $\beta_{t3}$ to $\beta_{t14}$ are the slopes of different provinces for Justin Trudeau's model. $x_{province}$ is an indicator variable showing whether the voter is in the province whose abbreviation is in the subscript. The beta shows the mean difference between the probability odds for the two models when the voter is in Alberta and other 12 regions in Canada.\newline
 \textbullet $\beta_{t15}$ to $\beta_{t18}$ are the slopes of different education for Justin Trudeau's model. $x_{education}$ is an indicator variable whose subscript corresponds to the education level. The beta shows the mean difference between the probability odds for the two models when the voter has a Bachelor's degree and other four other degrees. In this case, C = College, CEGEP or other non-university certificate, HS = High school diploma or a high school equivalency certificate, LHS = Less than high school diploma or its equivalent, and U = University certificate, diploma or degree above the bachelor's level.\newline
 \textbullet $\epsilon$ is the error term of the models. \newline
-The full model is comprehensive given the data that I obtained for this study. However, one drawback related to that is the occurrence of overfitting. \newline
+The full model is comprehensive given the data that I obtained for this study. However, one drawback related to that is the occurrence of overfitting. As more variables fitted in the model, the $R^2$ will definitely increase although some of the variables may be useless. \newline
 
 ```{r, include=FALSE}
 # Creating the Model for Justin Trudeau
@@ -187,9 +187,9 @@ Comparing to the full model, the alternative model should have a lower AIC, show
 
 
 ## Post-Stratification 
-In the above section, we created two models based on the survey data demographics and its stated voting choice. In this section, we will perform post-stratification analyses, which "incorporating population distributions of variables into survey estimates" (Little, 1993) for Trudeau's model to estimate the proportion of voters who will vote for him. \newline
-In the analyses, we will group similar units together in order to reduce the variance. The variables we are using to construct the groups are: age, sex, province, and education. \newline
-We will then weigh each proportion estimate (within each bin) by the respective population size of that bin and sum those values and divide that by the entire population size. \newline
+In the above section, I created two models based on the survey data demographics and its stated voting choice. In this section, I will perform post-stratification analyses, which "incorporating population distributions of variables into survey estimates" (Little, 1993) for Trudeau's model to estimate the proportion of voters who will vote for him. \newline
+In the analyses, I will group similar units together in order to reduce the variance. The variables that I use to construct the groups are: age, sex, province, and education. \newline
+I will then weigh each proportion estimate (within each bin) by the respective population size of that bin and sum those values and divide that by the entire population size. \newline
 
 
 
@@ -317,4 +317,4 @@ Little, R. J. (1993). Post-Stratification: A Modeler's Perspective [Abstract]. J
   https://doi.org/10.21105/joss.01686
 
 # Appendix I: GitHub Repo Link
-
+https://github.com/Yao-He3/Canadian-Election-2019
